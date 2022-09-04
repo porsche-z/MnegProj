@@ -15,10 +15,10 @@ x_train, x_test, y_train, y_test = train_test_split(Data, Lable, random_state=5,
 #train KNN
 print("KNN")
 
-x = np.arange(1,11)
+x = np.arange(1,31)
 y_score = []
 y_time = []
-for i in range(1,11):
+for i in range(1,31):
 
     knn = KNeighborsClassifier(n_neighbors=i) 
     knn.fit(x_train, y_train)
@@ -33,9 +33,9 @@ plt.title('KNN')
 plt.xlabel('n_neighbors')
 plt.ylabel('score')
 plt.plot(x, y_score)
-plt.savefig(r"C:\studyProject\MProj2\codeOat\KNNres\Knn.png")
+plt.show()
 plt.title('KNN')
 plt.xlabel('n_neighbors')
 plt.ylabel('time')
 plt.plot(x, y_score)
-plt.savefig(r"C:\studyProject\MProj2\codeOat\KNNres\timeCost.png")
+plt.savefig(r"KNNres\timeCost.png")
