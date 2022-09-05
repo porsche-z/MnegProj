@@ -1,12 +1,15 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn import tree
+from sklearn.ensemble import BaggingClassifier, GradientBoostingClassifier
 from sklearn.model_selection import train_test_split
 import time
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB, BernoulliNB, MultinomialNB
 from sklearn import svm
 from xgboost import XGBClassifier
+import lightgbm as lgb
+
 
 
 def DT(x_train, y_train, x_test, y_test, max_dep):
@@ -39,6 +42,24 @@ def SVM(x_train, y_train, x_test, y_test):
 
 def XGbosst(x_train, y_train, x_test, y_test, num_estimator, use_label_encoder=False):
     clf = XGBClassifier(n_estimators=num_estimator, random_state=420)
+    clf = clf.fit(x_train, y_train)
+    score = clf.score(x_test, y_test)
+    return score
+
+def Baging(x_train, y_train, x_test, y_test, num_estimator):
+    clf = BaggingClassifier(n_estimators=num_estimator, random_state=420)
+    clf = clf.fit(x_train, y_train)
+    score = clf.score(x_test, y_test)
+    return score
+
+def GBDT(x_train, y_train, x_test, y_test, num_estimator):
+    clf = GradientBoostingClassifier(n_estimators=num_estimator,random_state=420)
+    clf = clf.fit(x_train, y_train)
+    score = clf.score(x_test, y_test)
+    return score
+
+def LGBM(x_train, y_train, x_test, y_test, num_estimator):
+    clf = lgb.LGBMClassifier(n_estimators=num_estimator,random_state=420)
     clf = clf.fit(x_train, y_train)
     score = clf.score(x_test, y_test)
     return score

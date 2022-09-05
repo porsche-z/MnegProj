@@ -12,15 +12,22 @@ testNums = [10,20,30,40]
 
 def getAns(x_train, x_test, y_train, y_test):
     print("DT SCORE: ")
-    print(model_zoo.DT(x_train, y_train, x_test, y_test, max_dep = 12))
+    print(model_zoo.DT(x_train, y_train, x_test, y_test, max_dep=12))
     print("KNN SCORE: ")
     print(model_zoo.KNN(x_train, y_train, x_test, y_test, num_neighbour=10))
     print("NB SCORE: ")
     print(model_zoo.NB(x_train, y_train, x_test, y_test))
     print("SVM SCORE: ")
     print(model_zoo.SVM(x_train, y_train, x_test, y_test))
+
+    print("Baging SCORE: ")
+    print(model_zoo.Baging(x_train, y_train, x_test, y_test, num_estimator=30))
+    print("GDB SCORE: ")
+    print(model_zoo.GBDT(x_train, y_train, x_test, y_test, num_estimator=30))
     print("XGBoost SCORE: ")
     print(model_zoo.XGbosst(x_train, y_train, x_test, y_test, num_estimator=30))
+    print("lightGBM SCORE: ")
+    print(model_zoo.LGBM(x_train, y_train, x_test, y_test, num_estimator=30))
 
 
 for i in user_nums:
